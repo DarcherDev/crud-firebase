@@ -1,0 +1,63 @@
+<h1>Heroe <small>Nombre del heroe</small></h1>
+
+<hr>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-danger" routerLink="/heroes" type="button">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+        Regresar
+    </button>
+</div>
+
+<div class="table mt-3 row animate__animated animate__fadeIn">
+    <div class="col">
+
+        <form (ngSubmit)="guardar( f )"
+                #f="ngForm">
+
+            <div class="form-group ">
+                <label>Firebase ID</label>
+                <input type="text" class="form-control" placeholder="Firebase ID" [(ngModel)]="heroe.id" name="id" disabled="disabled">
+                <small class="form-text text-muted"> Este campos es autogenerado</small>
+            </div>
+
+            <div class="form-group ">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre del heroe" [(ngModel)]="heroe.nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group ">
+                <label>Poder</label>
+                <input type="text" class="form-control" placeholder="Poder del heroe" [(ngModel)]="heroe.poder" name="poder">
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <br>
+                <button *ngIf="heroe.vivo"
+                        (click)="heroe.vivo = false"
+                        class="btn btn-outline-success w-50" type="button">
+                    <i class="fa fa-smile-wink"></i>
+                    Vivo
+                </button>
+                <button *ngIf="!heroe.vivo"
+                        (click)="heroe.vivo = true"
+                        class="btn btn-outline-danger w-50" type="button">
+                    <i class="fa fa-dizzy"></i>
+                    Muerto
+                </button>
+            </div>
+
+            <hr>
+            <div class="form-group text-center">
+                <button 
+                        type="submit"
+                        class="btn btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -23,4 +23,15 @@ export class HeroesService {
     }));
   }
 
+  actualizarHeroes ( heroe: HeroeModel){
+
+    const heroeTemp = {
+      ...heroe
+    } as Partial<HeroeModel>;
+
+    delete heroeTemp.id;
+
+    return this.http.put(`${ this.url}/heroes/${heroe.id}.json`,heroeTemp);
+  }
+
 }

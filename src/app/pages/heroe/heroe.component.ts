@@ -14,16 +14,17 @@ import { Observable } from 'rxjs';
 })
 export class HeroeComponent implements OnInit {
 
+
   heroe: HeroeModel = new HeroeModel();
 
-  constructor( private HeroesService: HeroesService) { }
+  constructor(private HeroesService: HeroesService) { }
 
   ngOnInit(): void {
   }
 
-  guardar(form: NgForm){
+  guardar(form: NgForm) {
 
-    if(form.invalid){
+    if (form.invalid) {
       console.log('formaulario no valido');
       return;
     }
@@ -38,18 +39,19 @@ export class HeroeComponent implements OnInit {
 
     let peticion: Observable<any>;
 
-    if(this.heroe.id){
-      peticion = this.HeroesService.actualizarHeroes( this.heroe );
-    }else{
-      peticion = this.HeroesService.crearHeroes( this.heroe );
+    if (this.heroe.id) {
+      peticion = this.HeroesService.actualizarHeroes(this.heroe);
+    } else {
+      peticion = this.HeroesService.crearHeroes(this.heroe);
     }
 
-    peticion.subscribe( resp => {
+    peticion.subscribe(resp => {
       Swal.fire({
         title: this.heroe.nombre,
         text: 'se actualizo correctamente',
         icon: 'success'
       });
     })
+    
   }
 }
